@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSE 341 Week 02 Team Activity</title>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+  <div>
+    
+    <form action="/ta02/addUser" method="POST">
+      <label name="name">Add User</label>
+      <input type="text" name="addUser" placeholder="Dorito Man" required>
+      <button type="submit">Submit</button>
+  </form>
+  </div>
+  <div>
+    
+    <form action="/ta02/removeUser" method="POST">
+      <label name="name">Remove User</label>
+      <input type="text" name="rmvUser" placeholder="Dorito Man" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
