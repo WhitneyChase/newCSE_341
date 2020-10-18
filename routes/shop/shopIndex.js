@@ -1,13 +1,17 @@
 const admin = require('./admin');
 const shop = require('./shop');
 const routes = require('express').Router();
+const adminRoutes = require('./admin');
+const shopRoutes = require('./shop');
+const authRoutes = require('./auth');
 const monfodb = require('../../utils/database');
 
 routes 
-    .use('/admin', admin)
-    .use('/shop', shop)
+    .use('/admin', adminRoutes)
+    .use('/shop', shopRoutes)
+    .use('/auth', authRoutes)
     .get('/', (req, res, next) => {
-        res.render('pages/index', {
+        res.render('shop/index', {
             pageTitle: 'Shop', 
             path: '/store'
         })
