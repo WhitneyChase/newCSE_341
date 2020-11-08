@@ -1,4 +1,7 @@
 //_______WEEK 03________//
+
+const ITEMS_PER_PAGE = 10;
+
 const parsingJsonObj = [
     {
       "tags": [
@@ -259,12 +262,31 @@ const parsingJsonObj = [
 }; 
 
 exports.getTeam03 = (req, res, next) => {
+  const page = +req.query.page || 1;
+  let totalItems;
+  // for (let i = 0; i < parsingJsonObj.length; i++){
+    let tenItems = parsingJsonObj.slice(0,10);
+    for(var i = 0; i<parsingJsonObj.length; i++){
+      if (parsingJsonObj[i] != tenItems[i]){
+        // tenItems = parsingJsonObj.slice(11,20);
+        // page = 2;
+      }
+    }
+  
+  // parsingJsonObj.currentPage = ((page -1) * ITEMS_PER_PAGE)
+  // parsingJsonObj.skip((page -1) * ITEMS_PER_PAGE)
     res.render('pages/ta03', { 
         title: 'Team Activity 03', 
         path: '/ta03', // For pug, EJS 
-        parsingJsonObj: parsingJsonObj,
+        parsingJsonObj: tenItems,
         activeTA03: true, // For HBS
         contentCSS: true, // For HBS
+        currentPage: page,
+        hasNextPage: ITEMS_PER_PAGE * page < totalItems,
+        hasPreviousPage: page > 1,
+        nextPage: page + 1,
+        previousPage: page - 1,
+        lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE)
     });
 };
 
