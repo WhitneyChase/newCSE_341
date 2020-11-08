@@ -13,6 +13,6 @@ router.post('/addUser', TeamActivities.postTeam02AddUser);
 router.post('/removeUser', TeamActivities.postTeam02RemoveUser);
 
 
-router.get('/', TeamActivities.getTeam02);
+// router.get('/', TeamActivities.getTeam02);
 
 module.exports = router;
