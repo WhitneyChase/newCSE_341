@@ -4,29 +4,22 @@ const routes = require('express').Router();
 const adminRoutes = require('./admin');
 const shopRoutes = require('./shop');
 const authRoutes = require('./auth');
-const monfodb = require('../../utils/database');
+
 
 routes 
-    .use('/admin', adminRoutes)
-    .use('/shop', shopRoutes)
     .use('/auth', authRoutes)
+    .use(adminRoutes)
+    .use(shopRoutes)
     .get('/', (req, res, next) => {
-        res.render('shop/index', {
-            pageTitle: 'Shop', 
+        res.render('shop/adminn/login', {
+            pageTitle: 'Login', 
             path: '/store'
         })
     });
 
     module.exports = routes;
 
-const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    family: 4
-};
 
 
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://Whitney-Chase-01:nitney15020@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
+// const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://Whitney-Chase-01:nitney15020@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";

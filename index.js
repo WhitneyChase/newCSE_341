@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 const app = express();
 // const mongoConnect = require('./utils/database');
 const User = require('./models/user');
-const MONGODB_URI = process.env.MONGODB_URL || 'mongodb+srv://Whitney-Chase-01:nitney15020@cluster01.clet0.mongodb.net/products?retryWrites=true&w=majority'
+const MONGODB_URI = process.env.MONGODB_URL || 'mongodb+srv://Whitney-Chase-01:nitney15020@cluster01.clet0.mongodb.net/<dbname>?retryWrites=true&w=majority'
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);

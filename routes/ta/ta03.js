@@ -1,7 +1,7 @@
 //TA03 PLACEHOLDER
 const express = require('express');
 const router = express.Router();
-const TeamActivities = require('../controllers/ta');
+const TeamActivities = require('../../controllers/ta03');
 
 
 //get the the info from the add user form
