@@ -7,7 +7,6 @@ const routes = require('./routes');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 const flash = require('connect-flash');
 const app = express();
-// const mongoConnect = require('./utils/database');
 const User = require('./models/user');
 const MONGODB_URI = process.env.MONGODB_URL || 'mongodb+srv://Whitney-Chase-01:nitney15020@cluster01.clet0.mongodb.net/<dbname>?retryWrites=true&w=majority'
 const mongoose = require('mongoose');
@@ -19,24 +18,12 @@ const csrf = require('csurf');
 
 
 const errorController = require('./controllers/shop/error')
-// const User = require('./models/user');
 
-
-// const MONGODB_URI =
-//   'mongodb+srv://Whitney-Chase-01:nitney15020@cluster01.clet0.mongodb.net/products';
-
-  // const app = express();
   const store = new MongoDBStore({
     uri: MONGODB_URI,
     collection: 'sessions'
   });
   const csrfProtection = csrf();
-
-  
-  // mongoose.set('useNewUrlParser', true);
-  // mongoose.set('useFindAndModify', false);
-  // mongoose.set('useCreateIndex', true);
-  
 
 
   
@@ -47,7 +34,6 @@ const errorController = require('./controllers/shop/error')
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
    .set('view engine', 'ejs')
-  //  .use(session({secret: 'dont be suspicious', resave: 'false', saveUninitialized: 'true', cookie: { secure: true}}))
    .use(bodyParser.urlencoded({ extended: false }))
    .use('/', routes)
    .use(session({
@@ -77,8 +63,8 @@ app.use(express.static(path.join(__dirname, 'public')))
   res.locals.csrfToken = req.csrfToken();
   next();
 })
-// 
-.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+ .listen(PORT, () => console.log(`Listening on ${ PORT }`));
  
   mongoose
   .connect(MONGODB_URI, {

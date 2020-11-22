@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="../../public/stylesheets/results.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <button href="prove10/fetchAll" id="get">Get Avengers Roster</button>
+  <form id="Avengers">
+    <Label for="post">Insert new Avenger</Label>
+    <input type="text" id="post">
+    <button type="submit" href="prove10/insert" id="get"></button>
+  </form>
+</div>
+<div class="container">
+  
+</div>
+<script>
+   fetch('/prove/prove10/fetchAll')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("get") = data;
+    })
+</script>
+
+</body>
+</html>
