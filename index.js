@@ -2,11 +2,14 @@
 // Our initial setup (package requires, port number setup)
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const path = require('path');
 const routes = require('./routes');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 const flash = require('connect-flash');
 const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 const User = require('./models/user');
 const MONGODB_URI = process.env.MONGODB_URL || 'mongodb+srv://Whitney-Chase-01:nitney15020@cluster01.clet0.mongodb.net/<dbname>?retryWrites=true&w=majority'
 const mongoose = require('mongoose');
@@ -64,6 +67,8 @@ app.use(express.static(path.join(__dirname, 'public')))
   next();
 })
 
+
+
  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
  
   mongoose
@@ -81,6 +86,13 @@ app.use(express.static(path.join(__dirname, 'public')))
     console.log(err);
   });
  
+
+  io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('chat message', (msg) => {
+      io.emit('chat message', msg);
+    });
+  })
 
   
    

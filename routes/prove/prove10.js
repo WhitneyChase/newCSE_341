@@ -16,11 +16,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/fetchAll', (req, res, next) => {
     let array =  json(dummyData);
-    // for(let i = 0; i < dummyData.length; i++){
-    //     const avengersArray = array[i].name;
-    //     res.json(avengersArray);
-    // }
-
+    
     array.array.forEach(element => {
         if(array[element].name != element.name){
             res.json(array)
